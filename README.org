@@ -1,0 +1,74 @@
+* Overview
+This project aims to provide a lightweight IDE for Haskell using =VIM= which
+work out of the box.
+It tries to replicate as much features of a full fledged IDE as possible whilst
+depending only on  =ghci=, or a few *optional* plugins or external
+dependencies.
+
+=VIM= can actuall do lots, so replicating IDE features might actually need
+nothing but, configuring it properly or explain how to use less-known vim
+features.
+
+In a way, this project is not really a =VIM= plugin but more a HOW TO vim
+guide (not even specific to Haskell), or a collection of recipes which some
+of them, deserve their own mapping.
+
+The name =vim-ghc-nomod= comes from the fact that =ghci= has a few some hidden
+function (like =:type-at= ) which allows to reimplement most of =ghc-mod=
+functionality using just =ghci=.
+
+* Motivation
+One things which comes often when talking about =Haskell= is the lack of IDE.
+I don't know if =VIM= qualifies as an IDE but you can definitely write
+Haskell and be productive using =VIM= and a few other tools.
+
+=VIM= can do a lot, I mean A LOT, but most of its feature are either not well
+known, or broken.  =VI= as probably been designed initially to write =C= and
+=LATEX= and some concept like macro or section don't really make sense in
+=Haskell=, unless you configure it properly (or remap it). Some of those
+features are so broken that no one is aware of it, and therefore no one ever
+tried to fix it. A simple example is =gf=. This command go to the file under
+the cursor, which work out of the box for a include in =C=, but you can
+configure =VIM= to transform what under the cursor so that it works for
+haskell module. What you just need to do, is replace =.= in module name by
+=/= and add =.hs= at the end. That's done by doing setting ='includeexpr'= to
+=substitute(v:fname,'\\.','/','g')= and =suffixesadd= to =.hs,.lhs= . How but
+=MyLib.Type= is actutall in =src/MyLib/Types.hs=. Just set your =path= to
+=./src= etc ... Another example is =section=. According to the manual,
+=sections= and =paragraph= are =nroff= concepts, can we configure them or
+just remap =(= ={= and family to work as expected in haskell ?
+
+There is actually lots of attempts to provide an Haskell IDE, or improve the
+Haskell coding experience but pretty much all of them rely on some external
+dependencies which either at some point break, don't work or are too slow for
+a particular project, are an absolute nightmare to install, don't work
+with the specific version of =ghc= that you are using, are abandonware, etc
+... I've tried them all, they all broke at some point. Event =ghcid=, break
+on my project (for some reason it doesn't support haskell multiline string
+syntax (you know the =\  ... \= syntax that nobody uses). For example, using
+=Spacemacs+intero= it will take 4 seconds on my project to open a module
+under cursor (=gf= as above). Mainly because =intero= will have to recompile
+everything to collect the fact that =MyLib.Type= module is defined in
+=MyLib/Type.hs=.
+
+The only tools that you are guarantied to be working are =VIM= and =ghci=.
+Let's see how fare we can go just using them.
+
+Also, the closest I've been from a perfect haskell IDE has been =Spacemacs+intero=.
+I've used for a few years and really loved it. Using =Spacemacs= was really
+smooth, however it kept breaking, was too slow etc. I decided to go back to
+bare =VIM=, but there some features which I really miss and I would like to
+replicate, like =iedit= (multiple cursor),  =wgrep= (edit the result of
+a grep and save all the files), =magit= (git interface). I know most of them
+can be . Also, I'm sure a real IDE can do things I
+don't know of, and I am interested if =VIM= can actually do it (with an
+arcane features).
+
+* VIM - Haskell Bridge
+* Features
+** Haskell specific
+*** Types
+  * Refacator
+** Navigation
+** Completion
+ * Search
