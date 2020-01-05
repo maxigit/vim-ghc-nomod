@@ -66,34 +66,46 @@ arcane features).
 
 * TODO VIM - Haskell Bridge
 * Summary
- #+BEGIN: columnview :hlines 3 :id features-table :skip-empty-rows nil :indent T
- | Feature                       | TODO | Vim               | Type | Note                            | Requires    | Status |
- |-------------------------------+------+-------------------+------+---------------------------------+-------------+--------|
- | Features                      | TODO |                   |      |                                 |             |        |
- |-------------------------------+------+-------------------+------+---------------------------------+-------------+--------|
- | \_  Configuration             | TODO |                   |      |                                 |             |        |
- |-------------------------------+------+-------------------+------+---------------------------------+-------------+--------|
- | \_    Global configuration    | TODO |                   |      |                                 |             |        |
- |-------------------------------+------+-------------------+------+---------------------------------+-------------+--------|
- | \_    Project specific        |      |                   |      |                                 |             |        |
- |-------------------------------+------+-------------------+------+---------------------------------+-------------+--------|
- | \_    path                    |      |                   |      |                                 |             |        |
- |-------------------------------+------+-------------------+------+---------------------------------+-------------+--------|
- | \_  Haskell specific          |      |                   |      |                                 |             |        |
- |-------------------------------+------+-------------------+------+---------------------------------+-------------+--------|
- | \_    Types                   |      |                   |      |                                 |             |        |
- |-------------------------------+------+-------------------+------+---------------------------------+-------------+--------|
- | \_  Navigation                |      |                   |      |                                 |             |        |
- |-------------------------------+------+-------------------+------+---------------------------------+-------------+--------|
- | \_    Open file in project    |      |                   |      |                                 |             |        |
- | \_      Spacemacs =<space>ph= | TODO | =:find **/<file>= |      | Can use wildcart and completion | ='path'=    | Good   |
- | \_                            |      | =<space>ff=       | map  |                                 | =[vim:FZF]= | Good   |
+ #+BEGIN: columnview :hlines 3 :id features-table :skip-empty-rows nil :indent t
+ | Feature                          | TODO | Vim                  | Type | Note                            | Requires      | Status |
+ |----------------------------------+------+----------------------+------+---------------------------------+---------------+--------|
+ | Features                         | TODO |                      |      |                                 |               |        |
+ |----------------------------------+------+----------------------+------+---------------------------------+---------------+--------|
+ | \_  Configuration                | TODO |                      |      |                                 |               |        |
+ |----------------------------------+------+----------------------+------+---------------------------------+---------------+--------|
+ | \_    Global configuration       | TODO |                      |      |                                 |               |        |
+ |----------------------------------+------+----------------------+------+---------------------------------+---------------+--------|
+ | \_    Project specific           |      |                      |      |                                 |               |        |
+ |----------------------------------+------+----------------------+------+---------------------------------+---------------+--------|
+ | \_    path                       |      |                      |      |                                 |               |        |
+ |----------------------------------+------+----------------------+------+---------------------------------+---------------+--------|
+ | \_  Haskell specific             |      |                      |      |                                 |               |        |
+ |----------------------------------+------+----------------------+------+---------------------------------+---------------+--------|
+ | \_    Type under Cursor          |      |                      |      |                                 |               |        |
+ | \_                               |      | send =:t <C-W><C-R>= |      | use hole                        | =ghci= bridge | Fair   |
+ | \_                               | TODO | [i                   | vim  | find first definition           | 'path'        | Fair   |
+ | \_                               | TODO | [d                   | vim  | find                            | 'path'        | Fair   |
+ | \_                               |      | insert ( _ $ ... )   |      | use hole                        | =ghcid=       | Fair   |
+ | \_                               |      | insert :: _          |      | use type hole                   | =ghcid=       | Fair   |
+ |----------------------------------+------+----------------------+------+---------------------------------+---------------+--------|
+ | \_    Type of selection          |      |                      |      |                                 |               |        |
+ |----------------------------------+------+----------------------+------+---------------------------------+---------------+--------|
+ | \_    Insert type signature      |      |                      |      |                                 |               |        |
+ |----------------------------------+------+----------------------+------+---------------------------------+---------------+--------|
+ | \_  Navigation                   |      |                      |      |                                 |               |        |
+ |----------------------------------+------+----------------------+------+---------------------------------+---------------+--------|
+ | \_    Open file in project       |      |                      |      |                                 |               |        |
+ | \_      Spacemacs =<space>ph=    | TODO | =:find **/<file>=    |      | Can use wildcart and completion | ='path'=      | Fair   |
+ | \_                               |      | =<space>ff=          | map  |                                 | =[vim:FZF]=   | Fair   |
+ | \_      Find Symbol under cursor |      | <space>*             |      |                                 |               |        |
+ |----------------------------------+------+----------------------+------+---------------------------------+---------------+--------|
+ | \_  Completion                   |      |                      |      |                                 |               |        |
  #+END:
 * TODO Features
 :PROPERTIES:
 :COLUMNS: %ITEM(Feature) %TODO %Vim %3Type %10Note %Requires %Status
 :Type_all: map vim NA
-:Status_all: OK Good BAD
+:Status_all: OK Fair BAD
 :ID: features-table
 :END:
 ** TODO Configuration [0/1]
@@ -101,7 +113,46 @@ arcane features).
 *** Project specific
 *** path
 ** Haskell specific [0/0]
-*** Types
+*** Type under Cursor
+****   
+     :PROPERTIES:
+     :Vim: send =:t <C-W><C-R>=
+     :Note: use hole
+     :Requires: =ghci= bridge
+     :Status: Fair
+     :END:
+**** TODO
+     :PROPERTIES:
+     :Vim: [i
+     :Note: find first definition
+     :Type: vim
+     :Requires: 'path'
+     :Status: Fair
+     :END:
+**** TODO
+     :PROPERTIES:
+     :Vim: [d
+     :Note: find 
+     :Type: vim
+     :Requires: 'path'
+     :Status: Fair
+     :END:
+****   
+     :PROPERTIES:
+     :Vim: insert ( _ $ ... )
+     :Note: use hole
+     :Requires: =ghcid=
+     :Status: Fair
+     :END:
+****   
+     :PROPERTIES:
+     :Vim: insert :: _
+     :Note: use type hole
+     :Requires: =ghcid=
+     :Status: Fair
+     :END:
+*** Type of selection
+*** Insert type signature
   * Refacttor
 ** Navigation [0/0]
 *** Open file in project
@@ -113,14 +164,14 @@ Open a file from the current project.
      :Vim:      =:find **/<file>=
      :Note: Can use wildcart and completion
      :Requires: ='path'=
-     :Status: Good
+     :Status: Fair
      :END:
 ****   
      :PROPERTIES:
      :Vim:      =<space>ff=
      :Requires: =[vim:FZF]=
      :Type: map
-     :Status: Good
+     :Status: Fair
      :END:
 **** Find Symbol under cursor
      :PROPERTIES:
