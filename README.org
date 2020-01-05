@@ -64,11 +64,69 @@ can be . Also, I'm sure a real IDE can do things I
 don't know of, and I am interested if =VIM= can actually do it (with an
 arcane features).
 
-* VIM - Haskell Bridge
-* Features
-** Haskell specific
+* TODO VIM - Haskell Bridge
+* Summary
+ #+BEGIN: columnview :hlines 3 :id features-table :skip-empty-rows nil :indent T
+ | Feature                       | TODO | Vim               | Type | Note                            | Requires    | Status |
+ |-------------------------------+------+-------------------+------+---------------------------------+-------------+--------|
+ | Features                      | TODO |                   |      |                                 |             |        |
+ |-------------------------------+------+-------------------+------+---------------------------------+-------------+--------|
+ | \_  Configuration             | TODO |                   |      |                                 |             |        |
+ |-------------------------------+------+-------------------+------+---------------------------------+-------------+--------|
+ | \_    Global configuration    | TODO |                   |      |                                 |             |        |
+ |-------------------------------+------+-------------------+------+---------------------------------+-------------+--------|
+ | \_    Project specific        |      |                   |      |                                 |             |        |
+ |-------------------------------+------+-------------------+------+---------------------------------+-------------+--------|
+ | \_    path                    |      |                   |      |                                 |             |        |
+ |-------------------------------+------+-------------------+------+---------------------------------+-------------+--------|
+ | \_  Haskell specific          |      |                   |      |                                 |             |        |
+ |-------------------------------+------+-------------------+------+---------------------------------+-------------+--------|
+ | \_    Types                   |      |                   |      |                                 |             |        |
+ |-------------------------------+------+-------------------+------+---------------------------------+-------------+--------|
+ | \_  Navigation                |      |                   |      |                                 |             |        |
+ |-------------------------------+------+-------------------+------+---------------------------------+-------------+--------|
+ | \_    Open file in project    |      |                   |      |                                 |             |        |
+ | \_      Spacemacs =<space>ph= | TODO | =:find **/<file>= |      | Can use wildcart and completion | ='path'=    | Good   |
+ | \_                            |      | =<space>ff=       | map  |                                 | =[vim:FZF]= | Good   |
+ #+END:
+* TODO Features
+:PROPERTIES:
+:COLUMNS: %ITEM(Feature) %TODO %Vim %3Type %10Note %Requires %Status
+:Type_all: map vim NA
+:Status_all: OK Good BAD
+:ID: features-table
+:END:
+** TODO Configuration [0/1]
+*** TODO Global configuration
+*** Project specific
+*** path
+** Haskell specific [0/0]
 *** Types
-  * Refacator
-** Navigation
+  * Refacttor
+** Navigation [0/0]
+*** Open file in project
+   :PROPERTIES:
+   :END:
+Open a file from the current project.
+**** TODO Spacemacs =<space>ph=
+     :PROPERTIES:
+     :Vim:      =:find **/<file>=
+     :Note: Can use wildcart and completion
+     :Requires: ='path'=
+     :Status: Good
+     :END:
+****   
+     :PROPERTIES:
+     :Vim:      =<space>ff=
+     :Requires: =[vim:FZF]=
+     :Type: map
+     :Status: Good
+     :END:
+**** Find Symbol under cursor
+     :PROPERTIES:
+     :Spacemacs: spacemacs <space>*
+     :vim: <space>*
+     :END:
+
 ** Completion
  * Search
